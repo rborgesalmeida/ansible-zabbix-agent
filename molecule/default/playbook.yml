@@ -27,7 +27,7 @@
         - skip_ansible_lint
 
   roles:
-    - role: ansible-zabbix-agent
+    - role: dj-wasabi.zabbix-agent
       zabbix_agent_server: 192.168.3.33
       zabbix_agent_serveractive: 192.168.3.33
       zabbix_agent_listenip: 0.0.0.0
