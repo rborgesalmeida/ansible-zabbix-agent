@@ -1,1 +1,1 @@
-- src: https://github.com/dj-wasabi/ansible-zabbix-agent
+- src: dj-wasabi.zabbix-agent
