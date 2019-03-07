@@ -1,0 +1,30 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: "Installing packages on CentOS family"
+      yum:
+        name:
+          - net-tools
+          - which
+        state: present
+      when:
+        - ansible_os_family == 'RedHat'
+
+    - name: "Installing packages on Debian family"
+      apt:
+        name:
+          - net-tools
+        state: present
+      when:
+        - ansible_os_family == 'Debian'
+
+    - name: "Installing packages on Suse family"
+      shell: zypper install -y python-xml python-libxml2 net-tools which
+      changed_when: False
+      when: ansible_os_family == 'Suse'
+      tags:
+        - skip_ansible_lint
+
+  roles:
+    - role: dj-wasabi.zabbix-agent
